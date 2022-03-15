@@ -116,7 +116,7 @@ install_user="/home/"${USERNAME}"/install_user.sh"
 chmod 744 $install_user
 
 #Latest Snapshot
-latestsnap=$(curl http://testnet.snapshot-de.mydefichain.com/latest.txt)
+LATEST=$(curl http://testnet.snapshot-de.mydefichain.com/latest.txt)
 
 cat >> $install_user << EOL
 cd ~/
@@ -171,8 +171,8 @@ DEFID = "/home/${USERNAME}/.defi/defid"
 EOL2
 
 cd ~/
-wget http://testnet.snapshot-de.mydefichain.com/$(latestsnap)
-tar -xvzf $(LATEST) -C ~/.defi/data/testnet3/
+wget http://testnet.snapshot-de.mydefichain.com/${LATEST}
+tar -xvzf ${LATEST} -C ~/.defi/data/testnet3/
 
 
 crontab -l | { cat; echo "* * * * * pidof defid || ~/.defi/defid"; } | crontab -
