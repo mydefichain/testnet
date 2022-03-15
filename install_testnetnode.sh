@@ -116,7 +116,7 @@ install_user="/home/"${USERNAME}"/install_user.sh"
 chmod 744 $install_user
 
 #Latest Snapshot
-LATEST=$(curl http://testnet.snapshot-de.mydefichain.com/latest.txt)
+latestsnap=$(curl http://testnet.snapshot-de.mydefichain.com/latest.txt)
 
 cat >> $install_user << EOL
 cd ~/
@@ -171,7 +171,7 @@ DEFID = "/home/${USERNAME}/.defi/defid"
 EOL2
 
 cd ~/
-wget http://testnet.snapshot-de.mydefichain.com/$(LATEST)
+wget http://testnet.snapshot-de.mydefichain.com/$(latestsnap)
 tar -xvzf $(LATEST) -C ~/.defi/data/testnet3/
 
 
