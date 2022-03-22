@@ -121,10 +121,10 @@ LATEST=$(curl http://testnet.snapshot-de.mydefichain.com/latest.txt)
 cat >> $install_user << EOL
 cd ~/
 
-wget https://mydeficha.in/public/defichain-v3-67fd693-x86_64-pc-linux-gnu.tar.gz
-tar -xvzf defichain-v3-67fd693-x86_64-pc-linux-gnu.tar.gz
+wget https://github.com/DeFiCh/ain/releases/download/v2.7.0-alpha/defichain-2.7.0-alpha-x86_64-pc-linux-gnu.tar.gz
+tar -xvzf defichain-2.7.0-alpha-x86_64-pc-linux-gnu.tar.gz
 mkdir ~/.defi/
-cp ./defichain-v3-67fd693/bin/* ~/.defi/
+cp ./defichain-2.7.0-alpha/bin/* ~/.defi/
 mkdir ~/.defi/data
 mkdir ~/.defi/data/
 mkdir ~/.defi/data/testnet3/
