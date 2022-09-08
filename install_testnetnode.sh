@@ -2,6 +2,7 @@
 USERNAME=$1
 SERVERNAME=$2
 DOMAIN=$3
+VERSION=$4
 
 #Pruefen ob debian 11 buster installiert:
 lsb_release -a
@@ -12,6 +13,13 @@ apt update && apt full-upgrade
 
 #Set Timezone
 ln -sf /usr/share/zoneinfo/Europe/Berlin /etc/localtime
+
+#Set NTP-Server
+cat >> /etc/systemd/timesyncd.conf << EOL
+NTP=ptbtime1.ptb.de
+NTP=ptbtime2.ptb.de
+NTP=ptbtime3.ptb.de
+EOL
 
 #Packages installieren:
 echo "Install Packages..."
@@ -109,7 +117,7 @@ echo "Create User, lock rootshell..."
 useradd -m -s /bin/bash -G adm,systemd-journal,sudo,www-data ${USERNAME} && passwd ${USERNAME}
 
 sudo sed -i '/PermitRootLogin/d' /etc/ssh/sshd_config && \
-echo -e "PermitRootLogin no" | sudo tee -a  /etc/ssh/sshd_config
+echo "PermitRootLogin no" | sudo tee -a  /etc/ssh/sshd_config
 
 touch "/home/"${USERNAME}"/install_user.sh"
 install_user="/home/"${USERNAME}"/install_user.sh"
@@ -121,10 +129,10 @@ LATEST=$(curl http://testnet.snapshot-de.mydefichain.com/latest.txt)
 cat >> $install_user << EOL
 cd ~/
 
-wget https://github.com/DeFiCh/ain/releases/download/v2.7.0-alpha/defichain-2.7.0-alpha-x86_64-pc-linux-gnu.tar.gz
-tar -xvzf defichain-2.7.0-alpha-x86_64-pc-linux-gnu.tar.gz
+wget https://github.com/DeFiCh/ain/releases/download/v${VERSION}/defichain-${VERSION}-x86_64-pc-linux-gnu.tar.gz
+tar -xvzf defichain-${VERSION}-x86_64-pc-linux-gnu.tar.gz
 mkdir ~/.defi/
-cp ./defichain-2.7.0-alpha/bin/* ~/.defi/
+cp ./defichain-${VERSION}/bin/* ~/.defi/
 mkdir ~/.defi/data
 mkdir ~/.defi/data/
 mkdir ~/.defi/data/testnet3/
@@ -184,8 +192,8 @@ pip3.9 install psutil
 pip3 install psutil
 
 #Wait for Start defid and create API
-echo "Wait 120 seconds to start defid and create API. Be patient..."
-sleep 120
+echo "Wait 60 seconds to start defid and create API. Be patient..."
+sleep 60
 
 cd ~/script/
 python3.9 api_collector.py
