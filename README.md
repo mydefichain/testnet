@@ -17,12 +17,12 @@ Login to your Server with SSH (Putty) as a root-User
 
 ```wget https://raw.githubusercontent.com/mydefichain/testnet/main/install_testnetnode.sh```  
 ```chmod 744 ./install_testnetnode.sh```  
-```./install_testnetnode.sh USERNAME SERVERNAME DOMAIN```  
+```./install_testnetnode.sh USERNAME SERVERNAME DOMAIN VERSION```  
 
 ---
 #### Example
 
-```./install_testnetnode.sh defichain myMasternode freedomain.com```  
+```./install_testnetnode.sh defichain myMasternode freedomain.com 2.10.0```  
 
 The Script creates a user named "defichain" and your Server is reachable at http://mymasternode.freedomain.com  
 
