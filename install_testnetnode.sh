@@ -124,7 +124,7 @@ install_user="/home/"${USERNAME}"/install_user.sh"
 chmod 744 $install_user
 
 #Latest Snapshot
-LATEST=$(curl http://testnet.snapshot-de.mydefichain.com/latest.txt)
+LATEST=$(curl https://testnet.snapshot-de.mydefichain.com/latest.txt)
 
 cat >> $install_user << EOL
 cd ~/
