@@ -22,7 +22,7 @@ Login to your Server with SSH (Putty) as a root-User
 ---
 #### Example
 
-```./install_testnetnode.sh defichain myMasternode freedomain.com 2.10.0```  
+```./install_testnetnode.sh defichain myMasternode freedomain.com 2.11.0```  
 
 The Script creates a user named "defichain" and your Server is reachable at http://mymasternode.freedomain.com  
 
