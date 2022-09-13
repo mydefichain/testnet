@@ -19,6 +19,12 @@ Login to your Server with SSH (Putty) as a root-User
 ```chmod 744 ./install_testnetnode.sh```  
 ```./install_testnetnode.sh USERNAME SERVERNAME DOMAIN VERSION```  
 
+#### Actual Version
+
+Here you will find information about the latest version and what to look out for:
+
+https://mydeficha.in/en/index.php?site=testnet
+
 ---
 #### Example
 
