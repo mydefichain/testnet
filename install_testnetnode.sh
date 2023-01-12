@@ -157,6 +157,7 @@ datadir=/home/${USERNAME}/.defi/data/
 gen=0
 spv=1
 txindex=1
+blocktimeordering=1
 #debug=staking
 EOF
 
