@@ -9,7 +9,7 @@ DeFiChain Testnet Masternode/Fullnode Installationscript incl. API
 - 100 GB SSD/NVMe
 - Registered Domain or Subdomain pointing to the IP address of your server
 
-> :warning: Please note, the Script install Apache and configure it and change your Hostname and disable root-Access. Please use it only on a fresh installed system to avoid problems.  For test purposes only! At the moment it used a special defid for the Testnet-Environment. You can compare your Node with https://mydeficha.in/en/index.php?site=testnet to check correkt Chain and Blockheigt/Hash.
+> :warning: Please note, the Script install Apache and configure it and change your Hostname and disable root-Access. Please use it only on a fresh installed system to avoid problems.  For test purposes only! You can compare your Node with https://mydeficha.in/en/index.php?site=testnet to check correkt Chain and Blockheigt/Hash.
 
 #### Installation
 
