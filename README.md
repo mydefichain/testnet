@@ -28,7 +28,7 @@ https://mydeficha.in/en/index.php?site=testnet
 ---
 #### Example
 
-```./install_testnetnode.sh defichain myMasternode freedomain.com 3.2.1```  
+```./install_testnetnode.sh defichain myMasternode freedomain.com 3.2.2```  
 
 The Script creates a user named "defichain" and your Server is reachable at http://mymasternode.freedomain.com  
 
