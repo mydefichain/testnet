@@ -4,7 +4,7 @@ SERVERNAME=$2
 DOMAIN=$3
 VERSION=$4
 
-#Pruefen ob debian 11 buster installiert:
+#Pruefen ob debian 11/12 oder Ubuntu 22.04 installiert:
 lsb_release -a
 echo "Check OS...Debian 10/11 needed"
 sleep 3
@@ -23,7 +23,7 @@ EOL
 
 #Packages installieren:
 echo "Install Packages..."
-apt install -qqy sudo nano mc ufw curl ftp htop python3 python3-pip pwgen apache2 php libapache2-mod-php
+apt install -qqy sudo nano mc ufw curl ftp htop python3 python3-pip pwgen apache2 php libapache2-mod-php net-tools
 
 #Hostname
 hostnamectl set-hostname ${SERVERNAME}.${DOMAIN}
@@ -52,6 +52,7 @@ sudo ufw limit ssh/tcp
 sudo ufw allow 443/tcp
 sudo ufw allow 80/tcp
 sudo ufw allow 18555/tcp
+sudo ufw allow 18551/tcp
 sudo ufw allow 6556/tcp
 sudo ufw allow 18333/tcp
 sudo ufw logging on
@@ -149,6 +150,10 @@ rpcuser=$(pwgen -s 8 -N 1)
 rpcpassword=$(pwgen -s 64 -N 1)
 rpcbind=127.0.0.1
 rpcport=18554
+rpcallowip=127.0.0.1
+grpcbind=127.0.0.1
+ethrpcbind=127.0.0.1
+ethmaxconnections=1000
 addnode=89.58.14.177
 addnode=154.53.43.103
 addnode=161.97.90.159
@@ -185,7 +190,7 @@ tar -xvzf ${LATEST} -C ~/.defi/data/testnet3/
 
 
 crontab -l | { cat; echo "* * * * * pidof defid || ~/.defi/defid"; } | crontab -
-crontab -l | { cat; echo "*/5 * * * * python3.9 ~/script/api_collector.py"; } | crontab -
+crontab -l | { cat; echo "*/5 * * * * python3 ~/script/api_collector.py"; } | crontab -
 
 pip3.9 install python-bitcoinrpc
 pip3 install python-bitcoinrpc
@@ -197,7 +202,7 @@ echo "Wait 60 seconds to start defid and create API. Be patient..."
 sleep 60
 
 cd ~/script/
-python3.9 api_collector.py
+python3 api_collector.py
 
 echo "Installation Complete, type ~/.defi/defi-cli getblockcount to check the Sync-State."
 sleep 3
