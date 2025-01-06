@@ -4,7 +4,7 @@ SERVERNAME=$2
 DOMAIN=$3
 VERSION=$4
 
-#Pruefen ob debian 11/12 oder Ubuntu 22.04 installiert:
+#Pruefen ob debian 11/12 oder Ubuntu 22.04/24.04 installiert:
 lsb_release -a
 echo "Check OS...Debian 10/11 needed"
 sleep 3
@@ -155,9 +155,9 @@ grpcbind=127.0.0.1
 ethrpcbind=127.0.0.1
 ethmaxconnections=1000
 addnode=89.58.14.177
-addnode=154.53.43.103
-addnode=161.97.90.159
-addnode=194.233.89.209
+addnode=89.58.26.201
+addnode=89.58.14.115
+addnode=89.58.7.88
 datadir=/home/${USERNAME}/.defi/data/
 gen=0
 spv=1
@@ -192,10 +192,10 @@ tar -xvzf ${LATEST} -C ~/.defi/data/testnet3/
 crontab -l | { cat; echo "* * * * * pidof defid || ~/.defi/defid"; } | crontab -
 crontab -l | { cat; echo "*/5 * * * * python3 ~/script/api_collector.py"; } | crontab -
 
-pip3.9 install python-bitcoinrpc
-pip3 install python-bitcoinrpc
-pip3.9 install psutil
-pip3 install psutil
+pip3.9 install python-bitcoinrpc --break-system-packages
+pip3 install python-bitcoinrpc --break-system-packages
+pip3.9 install psutil --break-system-packages
+pip3 install psutil --break-system-packages
 
 #Wait for Start defid and create API
 echo "Wait 60 seconds to start defid and create API. Be patient..."
